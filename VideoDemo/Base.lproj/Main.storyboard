@@ -23,19 +23,42 @@
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7e-YE-UCQ">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDq-LS-2cr">
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Record" backgroundImage="circle-icon"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="tintColor" red="0.93194609880000001" green="0.137406379" blue="0.15837177629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Record" backgroundImage="circle-icon-red">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCd-0h-DKo">
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Album" backgroundImage="circle-icon"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V9G-DT-nzo">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="EDS-Gh-EF4"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCd-0h-DKo">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="wNe-WC-g4k"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="tintColor" red="1" green="0.79736030099999999" blue="0.104473196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Album" backgroundImage="circle-icon-yellow">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4e-1z-JjI">
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Save" backgroundImage="circle-icon"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i6b-Fy-pMi"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4e-1z-JjI">
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="tintColor" red="0.49151676890000001" green="0.8309457898" blue="0.13124695419999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Save" backgroundImage="circle-icon-green">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="292" id="0ay-Qp-ApA"/>
+                                    <constraint firstItem="i6b-Fy-pMi" firstAttribute="width" secondItem="V9G-DT-nzo" secondAttribute="width" id="Ykj-QD-5bQ"/>
                                     <constraint firstItem="qCd-0h-DKo" firstAttribute="width" secondItem="tDq-LS-2cr" secondAttribute="width" id="pEY-rp-OJt"/>
                                     <constraint firstAttribute="height" constant="64" id="qQx-B5-MED"/>
                                     <constraint firstItem="qCd-0h-DKo" firstAttribute="width" secondItem="B4e-1z-JjI" secondAttribute="width" id="uVK-NI-2ya"/>
@@ -55,9 +78,8 @@
                             <constraint firstItem="laz-No-kjp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="BqL-ae-wXg"/>
                             <constraint firstItem="laz-No-kjp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Gvt-iL-tH9"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="M7e-YE-UCQ" secondAttribute="bottom" constant="20" id="Mln-1N-Dhi"/>
-                            <constraint firstItem="M7e-YE-UCQ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="XbQ-eK-xfm"/>
-                            <constraint firstItem="M7e-YE-UCQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="i5H-zp-HHV"/>
                             <constraint firstAttribute="trailing" secondItem="laz-No-kjp" secondAttribute="trailing" id="pIN-Pf-p3n"/>
+                            <constraint firstItem="M7e-YE-UCQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ueu-hn-C77"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Untitled Post" id="bYW-ht-SLk"/>
@@ -123,6 +145,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="circle-icon" width="300" height="300"/>
+        <image name="circle-icon-green" width="300" height="300"/>
+        <image name="circle-icon-red" width="300" height="300"/>
+        <image name="circle-icon-yellow" width="300" height="300"/>
     </resources>
 </document>

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  DemoViewController.swift
 //  VideoDemo
 //
 //  Created by Andrew Sowers on 10/13/16.
@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: VideoDemoViewController {
+class DemoViewController: VideoDemoViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

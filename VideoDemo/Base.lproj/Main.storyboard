@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,7 +11,7 @@
         <!--Untitled Post-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="VideoDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DemoViewController" id="BYZ-38-t0r" customClass="DemoViewController" customModule="VideoDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -19,25 +20,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMQ-Bb-bgf">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7e-YE-UCQ">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDq-LS-2cr">
-                                        <state key="normal" title="Record">
-                                            <color key="titleColor" red="0.93194609880447388" green="0.13740637898445129" blue="0.15837177634239197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDq-LS-2cr">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Record" backgroundImage="circle-icon"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCd-0h-DKo">
-                                        <state key="normal" title="Album">
-                                            <color key="titleColor" red="1" green="0.79736030101776123" blue="0.10447319597005844" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Album" backgroundImage="circle-icon"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4e-1z-JjI">
-                                        <state key="normal" title="Save">
-                                            <color key="titleColor" red="0.49151676893234253" green="0.83094578981399536" blue="0.13124695420265198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Save" backgroundImage="circle-icon"/>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -46,16 +41,23 @@
                                     <constraint firstItem="qCd-0h-DKo" firstAttribute="width" secondItem="B4e-1z-JjI" secondAttribute="width" id="uVK-NI-2ya"/>
                                 </constraints>
                             </stackView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laz-No-kjp">
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="laz-No-kjp" secondAttribute="height" multiplier="1:1" id="cNJ-Gh-NfL"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="rrX-dH-Qwg" kind="embed" id="9uE-Lh-1nz"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.23424834012985229" green="0.26162609457969666" blue="0.32391834259033203" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="JMQ-Bb-bgf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8hj-G6-L9A"/>
+                            <constraint firstItem="laz-No-kjp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="BqL-ae-wXg"/>
+                            <constraint firstItem="laz-No-kjp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Gvt-iL-tH9"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="M7e-YE-UCQ" secondAttribute="bottom" constant="20" id="Mln-1N-Dhi"/>
-                            <constraint firstItem="JMQ-Bb-bgf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Otf-86-svx"/>
-                            <constraint firstItem="JMQ-Bb-bgf" firstAttribute="centerX" secondItem="M7e-YE-UCQ" secondAttribute="centerX" id="Oxa-cN-FW0"/>
                             <constraint firstItem="M7e-YE-UCQ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="XbQ-eK-xfm"/>
-                            <constraint firstItem="JMQ-Bb-bgf" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="ad3-KS-heg"/>
                             <constraint firstItem="M7e-YE-UCQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="i5H-zp-HHV"/>
+                            <constraint firstAttribute="trailing" secondItem="laz-No-kjp" secondAttribute="trailing" id="pIN-Pf-p3n"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Untitled Post" id="bYW-ht-SLk"/>
@@ -87,5 +89,40 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="792.95352323838085"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="7YE-Gl-aks">
+            <objects>
+                <viewController id="rrX-dH-Qwg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e7x-kh-rNw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sa3-hW-Bhx">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eua-kk-qrL">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="eua-kk-qrL" secondAttribute="trailing" id="4iu-1c-2wt"/>
+                            <constraint firstItem="sa3-hW-Bhx" firstAttribute="top" secondItem="e7x-kh-rNw" secondAttribute="topMargin" id="DPM-NZ-ZSf"/>
+                            <constraint firstAttribute="bottom" secondItem="eua-kk-qrL" secondAttribute="bottom" id="Qeb-Da-yR7"/>
+                            <constraint firstItem="eua-kk-qrL" firstAttribute="leading" secondItem="e7x-kh-rNw" secondAttribute="leading" id="b5i-NQ-X9Q"/>
+                            <constraint firstItem="sa3-hW-Bhx" firstAttribute="leading" secondItem="e7x-kh-rNw" secondAttribute="leading" id="hTb-cT-k4M"/>
+                            <constraint firstAttribute="trailing" secondItem="sa3-hW-Bhx" secondAttribute="trailing" id="ki2-om-G5d"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="sa3-hW-Bhx" secondAttribute="bottom" id="qQZ-FW-dQw"/>
+                            <constraint firstItem="eua-kk-qrL" firstAttribute="top" secondItem="e7x-kh-rNw" secondAttribute="top" id="rvx-M5-tLn"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oH9-gw-ep8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1797.5999999999999" y="792.95352323838085"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="circle-icon" width="300" height="300"/>
+    </resources>
 </document>

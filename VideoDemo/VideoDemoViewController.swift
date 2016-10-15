@@ -9,12 +9,10 @@
 import UIKit
 
 class VideoDemoViewController: UIViewController {
-	let colors = Colors()
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		let backgroundLayer = colors.defaultGradient
+		let backgroundLayer = Colors.DefaultGradient
 		backgroundLayer.frame = view.frame
 		view.layer.insertSublayer(backgroundLayer, at: 0)
 	}

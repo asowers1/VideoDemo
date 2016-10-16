@@ -83,6 +83,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Untitled Post" id="bYW-ht-SLk"/>
+                    <connections>
+                        <outlet property="albumButton" destination="qCd-0h-DKo" id="4Mk-kJ-QKZ"/>
+                        <outlet property="recordButton" destination="tDq-LS-2cr" id="s6s-Jt-11w"/>
+                        <outlet property="saveButton" destination="B4e-1z-JjI" id="LyM-3V-qkw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import ReactiveSwift
-import ReactiveCocoa
 
 public struct DemoViewModel {
 

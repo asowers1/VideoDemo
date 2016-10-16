@@ -10,10 +10,17 @@ import UIKit
 import AVFoundation
 
 class DemoViewController: VideoDemoViewController {
+	
+	private let _viewModel = DemoViewModel()
 
+	@IBOutlet weak var recordButton: UIButton!
+	@IBOutlet weak var albumButton: UIButton!
+	@IBOutlet weak var saveButton: UIButton!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
+		
+		recordButton?.racutil_signalProducer
 	}
 
 	override func didReceiveMemoryWarning() {

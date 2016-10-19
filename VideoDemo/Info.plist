@@ -24,6 +24,8 @@
 	<string>VideoDemo must access your Media library to share your photos and videos on your behalf</string>
 	<key>NSCameraUsageDescription</key>
 	<string>VideoDemo must access your Camera to record videos on your behalf</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>VideoDemo must access your Microphone to capture audio</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>VideoDemo must access your photos to share them on your behalf</string>
 	<key>UILaunchStoryboardName</key>
@@ -39,8 +41,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

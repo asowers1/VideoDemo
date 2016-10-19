@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4987F7441DB5C80B006392D2 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4987F7401DB5C80B006392D2 /* ReactiveCocoa.framework */; };
+		4987F7451DB5C80B006392D2 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4987F7401DB5C80B006392D2 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4987F7461DB5C80B006392D2 /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4987F7411DB5C80B006392D2 /* SwiftyUserDefaults.framework */; };
+		4987F7471DB5C80B006392D2 /* SwiftyUserDefaults.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4987F7411DB5C80B006392D2 /* SwiftyUserDefaults.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4987F7481DB5C80B006392D2 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4987F7421DB5C80B006392D2 /* ReactiveSwift.framework */; };
+		4987F7491DB5C80B006392D2 /* ReactiveSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4987F7421DB5C80B006392D2 /* ReactiveSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4987F74A1DB5C80B006392D2 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4987F7431DB5C80B006392D2 /* Result.framework */; };
+		4987F74B1DB5C80B006392D2 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4987F7431DB5C80B006392D2 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4987F7501DB6F014006392D2 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987F74D1DB6F014006392D2 /* PreviewView.swift */; };
+		4987F7511DB6F014006392D2 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987F74E1DB6F014006392D2 /* CameraViewController.swift */; };
+		4987F7521DB6F014006392D2 /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987F74F1DB6F014006392D2 /* PhotoCaptureDelegate.swift */; };
 		49A43C361DAFA25800E38380 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A43C351DAFA25800E38380 /* AppDelegate.swift */; };
 		49A43C381DAFA25800E38380 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A43C371DAFA25800E38380 /* DemoViewController.swift */; };
 		49A43C3B1DAFA25800E38380 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49A43C391DAFA25800E38380 /* Main.storyboard */; };
@@ -18,18 +29,7 @@
 		49A43C661DAFA39C00E38380 /* VideoDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A43C651DAFA39C00E38380 /* VideoDemoViewController.swift */; };
 		49BF799E1DB26C5100BD336C /* CaptureMediaPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BF799D1DB26C5100BD336C /* CaptureMediaPickerController.swift */; };
 		49BF79A41DB270A800BD336C /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BF79A31DB270A800BD336C /* Storyboard.swift */; };
-		49BF79B51DB278C400BD336C /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BF79B21DB278C400BD336C /* ReactiveCocoa.framework */; };
-		49BF79B61DB278C400BD336C /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 49BF79B21DB278C400BD336C /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		49BF79B71DB278C400BD336C /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BF79B31DB278C400BD336C /* ReactiveSwift.framework */; };
-		49BF79B81DB278C400BD336C /* ReactiveSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 49BF79B31DB278C400BD336C /* ReactiveSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		49BF79B91DB278C400BD336C /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BF79B41DB278C400BD336C /* Result.framework */; };
-		49BF79BA1DB278C400BD336C /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 49BF79B41DB278C400BD336C /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		49BF79BF1DB27EE200BD336C /* DemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BF79BE1DB27EE200BD336C /* DemoViewModel.swift */; };
-		49BF79C51DB2EE7900BD336C /* Foundation+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BF79C01DB2EE7900BD336C /* Foundation+RAC.swift */; };
-		49BF79C61DB2EE7900BD336C /* libSwift+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BF79C11DB2EE7900BD336C /* libSwift+RAC.swift */; };
-		49BF79C71DB2EE7900BD336C /* UIApplication+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BF79C21DB2EE7900BD336C /* UIApplication+RAC.swift */; };
-		49BF79C81DB2EE7900BD336C /* UIKit+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BF79C31DB2EE7900BD336C /* UIKit+RAC.swift */; };
-		49BF79C91DB2EE7900BD336C /* URLRequest+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BF79C41DB2EE7900BD336C /* URLRequest+RAC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,9 +56,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				49BF79BA1DB278C400BD336C /* Result.framework in Embed Frameworks */,
-				49BF79B61DB278C400BD336C /* ReactiveCocoa.framework in Embed Frameworks */,
-				49BF79B81DB278C400BD336C /* ReactiveSwift.framework in Embed Frameworks */,
+				4987F7451DB5C80B006392D2 /* ReactiveCocoa.framework in Embed Frameworks */,
+				4987F7471DB5C80B006392D2 /* SwiftyUserDefaults.framework in Embed Frameworks */,
+				4987F7491DB5C80B006392D2 /* ReactiveSwift.framework in Embed Frameworks */,
+				4987F74B1DB5C80B006392D2 /* Result.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,6 +67,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4987F72A1DB5A880006392D2 /* VideoDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VideoDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		4987F7401DB5C80B006392D2 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		4987F7411DB5C80B006392D2 /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = Carthage/Build/iOS/SwiftyUserDefaults.framework; sourceTree = "<group>"; };
+		4987F7421DB5C80B006392D2 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
+		4987F7431DB5C80B006392D2 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		4987F74D1DB6F014006392D2 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		4987F74E1DB6F014006392D2 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		4987F74F1DB6F014006392D2 /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
 		49A43C321DAFA25800E38380 /* VideoDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49A43C351DAFA25800E38380 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49A43C371DAFA25800E38380 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
@@ -83,15 +92,7 @@
 		49A43C651DAFA39C00E38380 /* VideoDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDemoViewController.swift; sourceTree = "<group>"; };
 		49BF799D1DB26C5100BD336C /* CaptureMediaPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureMediaPickerController.swift; sourceTree = "<group>"; };
 		49BF79A31DB270A800BD336C /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
-		49BF79B21DB278C400BD336C /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
-		49BF79B31DB278C400BD336C /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
-		49BF79B41DB278C400BD336C /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		49BF79BE1DB27EE200BD336C /* DemoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewModel.swift; sourceTree = "<group>"; };
-		49BF79C01DB2EE7900BD336C /* Foundation+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+RAC.swift"; sourceTree = "<group>"; };
-		49BF79C11DB2EE7900BD336C /* libSwift+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "libSwift+RAC.swift"; sourceTree = "<group>"; };
-		49BF79C21DB2EE7900BD336C /* UIApplication+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+RAC.swift"; sourceTree = "<group>"; };
-		49BF79C31DB2EE7900BD336C /* UIKit+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+RAC.swift"; sourceTree = "<group>"; };
-		49BF79C41DB2EE7900BD336C /* URLRequest+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+RAC.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +100,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49BF79B91DB278C400BD336C /* Result.framework in Frameworks */,
-				49BF79B51DB278C400BD336C /* ReactiveCocoa.framework in Frameworks */,
-				49BF79B71DB278C400BD336C /* ReactiveSwift.framework in Frameworks */,
+				4987F7441DB5C80B006392D2 /* ReactiveCocoa.framework in Frameworks */,
+				4987F7461DB5C80B006392D2 /* SwiftyUserDefaults.framework in Frameworks */,
+				4987F7481DB5C80B006392D2 /* ReactiveSwift.framework in Frameworks */,
+				4987F74A1DB5C80B006392D2 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,12 +127,11 @@
 		49A43C291DAFA25800E38380 = {
 			isa = PBXGroup;
 			children = (
-				49BF79BB1DB278CB00BD336C /* Frameworks */,
 				49A43C341DAFA25800E38380 /* VideoDemo */,
 				49A43C491DAFA25800E38380 /* VideoDemoTests */,
 				49A43C541DAFA25800E38380 /* VideoDemoUITests */,
 				49A43C331DAFA25800E38380 /* Products */,
-				49BF79AD1DB2783D00BD336C /* Frameworks */,
+				49BF79BB1DB278CB00BD336C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,15 +149,11 @@
 			isa = PBXGroup;
 			children = (
 				49A43C351DAFA25800E38380 /* AppDelegate.swift */,
-				49BF79C01DB2EE7900BD336C /* Foundation+RAC.swift */,
-				49BF79C11DB2EE7900BD336C /* libSwift+RAC.swift */,
-				49BF79C21DB2EE7900BD336C /* UIApplication+RAC.swift */,
-				49BF79C31DB2EE7900BD336C /* UIKit+RAC.swift */,
-				49BF79C41DB2EE7900BD336C /* URLRequest+RAC.swift */,
 				49BF79A11DB2706500BD336C /* Resources */,
 				49BF799F1DB2704000BD336C /* Media Cpature */,
 				49BF79A21DB2709C00BD336C /* Storyboard */,
 				49A43C411DAFA25800E38380 /* Info.plist */,
+				4987F72A1DB5A880006392D2 /* VideoDemo-Bridging-Header.h */,
 			);
 			path = VideoDemo;
 			sourceTree = "<group>";
@@ -191,6 +188,9 @@
 		49BF79A01DB2704C00BD336C /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4987F74D1DB6F014006392D2 /* PreviewView.swift */,
+				4987F74E1DB6F014006392D2 /* CameraViewController.swift */,
+				4987F74F1DB6F014006392D2 /* PhotoCaptureDelegate.swift */,
 				49A43C651DAFA39C00E38380 /* VideoDemoViewController.swift */,
 				49A43C371DAFA25800E38380 /* DemoViewController.swift */,
 				49BF79BE1DB27EE200BD336C /* DemoViewModel.swift */,
@@ -217,19 +217,13 @@
 			name = Storyboard;
 			sourceTree = "<group>";
 		};
-		49BF79AD1DB2783D00BD336C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		49BF79BB1DB278CB00BD336C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				49BF79B21DB278C400BD336C /* ReactiveCocoa.framework */,
-				49BF79B31DB278C400BD336C /* ReactiveSwift.framework */,
-				49BF79B41DB278C400BD336C /* Result.framework */,
+				4987F7401DB5C80B006392D2 /* ReactiveCocoa.framework */,
+				4987F7411DB5C80B006392D2 /* SwiftyUserDefaults.framework */,
+				4987F7421DB5C80B006392D2 /* ReactiveSwift.framework */,
+				4987F7431DB5C80B006392D2 /* Result.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -245,7 +239,7 @@
 				49A43C2F1DAFA25800E38380 /* Frameworks */,
 				49A43C301DAFA25800E38380 /* Resources */,
 				49BF79AC1DB2782500BD336C /* Embed Frameworks */,
-				49BF79AE1DB2784800BD336C /* ShellScript */,
+				49BF79AE1DB2784800BD336C /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -305,6 +299,7 @@
 					49A43C311DAFA25800E38380 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 2DP9335PZJ;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					49A43C451DAFA25800E38380 = {
@@ -369,21 +364,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		49BF79AE1DB2784800BD336C /* ShellScript */ = {
+		49BF79AE1DB2784800BD336C /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				Result,
+				ReactiveSwift,
+				ReactiveCocoa,
+				SwiftyUserDefaults,
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "case \"$PLATFORM_NAME\" in\nmacosx) plat=Mac;;\niphone*) plat=iOS;;\nwatch*) plat=watchOS;;\ntv*) plat=tvOS;;\n*) echo \"error: Unknown PLATFORM_NAME: $PLATFORM_NAME\"; exit 1;;\nesac\nfor (( n = 0; n < SCRIPT_INPUT_FILE_COUNT; n++ )); do\nVAR=SCRIPT_INPUT_FILE_$n\nframework=$(basename \"${!VAR}\")\nexport SCRIPT_INPUT_FILE_$n=\"$SRCROOT\"/./Carthage/Build/$plat/\"$framework\".framework\ndone\n\n/usr/local/bin/carthage copy-frameworks || exit\n\nfor (( n = 0; n < SCRIPT_INPUT_FILE_COUNT; n++ )); do\nVAR=SCRIPT_INPUT_FILE_$n\nsource=${!VAR}.dSYM\ndest=${BUILT_PRODUCTS_DIR}/$(basename \"$source\")\nditto \"$source\" \"$dest\" || exit\ndone";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -392,18 +389,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49BF79C61DB2EE7900BD336C /* libSwift+RAC.swift in Sources */,
 				49A43C381DAFA25800E38380 /* DemoViewController.swift in Sources */,
+				4987F7501DB6F014006392D2 /* PreviewView.swift in Sources */,
 				49A43C641DAFA34600E38380 /* Colors.swift in Sources */,
 				49A43C361DAFA25800E38380 /* AppDelegate.swift in Sources */,
-				49BF79C91DB2EE7900BD336C /* URLRequest+RAC.swift in Sources */,
-				49BF79C81DB2EE7900BD336C /* UIKit+RAC.swift in Sources */,
 				49A43C661DAFA39C00E38380 /* VideoDemoViewController.swift in Sources */,
 				49BF79A41DB270A800BD336C /* Storyboard.swift in Sources */,
 				49BF799E1DB26C5100BD336C /* CaptureMediaPickerController.swift in Sources */,
 				49BF79BF1DB27EE200BD336C /* DemoViewModel.swift in Sources */,
-				49BF79C51DB2EE7900BD336C /* Foundation+RAC.swift in Sources */,
-				49BF79C71DB2EE7900BD336C /* UIApplication+RAC.swift in Sources */,
+				4987F7521DB6F014006392D2 /* PhotoCaptureDelegate.swift in Sources */,
+				4987F7511DB6F014006392D2 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +550,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 2DP9335PZJ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -562,8 +558,11 @@
 				);
 				INFOPLIST_FILE = VideoDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrew.VideoDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VideoDemo/VideoDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -572,6 +571,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 2DP9335PZJ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -579,8 +579,10 @@
 				);
 				INFOPLIST_FILE = VideoDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrew.VideoDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VideoDemo/VideoDemo-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

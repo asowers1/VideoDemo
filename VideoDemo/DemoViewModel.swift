@@ -9,7 +9,6 @@
 import UIKit
 
 public struct DemoViewModel {
-
 	
 	//MARK: - Avatar Picker -
 	//--------------------------------------------------------------------------

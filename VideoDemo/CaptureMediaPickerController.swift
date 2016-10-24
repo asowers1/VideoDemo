@@ -13,3 +13,4 @@ class CaptureMediaPickerController: UIImagePickerController {
 		self.navigationBar.tintColor = Colors.NavigationNeonPink
 	}
 }
+

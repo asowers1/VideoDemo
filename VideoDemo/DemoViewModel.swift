@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 public struct DemoViewModel {
 	
@@ -40,20 +41,22 @@ public struct DemoViewModel {
 	}
 	
 	func mediaLibrary() {
-		let avatarPicker = CaptureMediaPickerController()
-		avatarPicker.allowsEditing = true
-		avatarPicker.sourceType = .photoLibrary
-		avatarPicker.modalPresentationStyle = .popover
-		avatarPicker.view.tintColor = Colors.NavigationNeonPink
-		self.mediaPicker.value = avatarPicker
+		let mediaPicker = CaptureMediaPickerController()
+		mediaPicker.allowsEditing = true
+		mediaPicker.sourceType = .savedPhotosAlbum
+		mediaPicker.mediaTypes = [String(kUTTypeImage), String(kUTTypeMovie)]
+		mediaPicker.modalPresentationStyle = .popover
+		mediaPicker.view.tintColor = Colors.NavigationNeonPink
+		self.mediaPicker.value = mediaPicker
 	}
 	
 	func takePhotoOrVideo() {
-		let avatarPicker = CaptureMediaPickerController()
-		avatarPicker.allowsEditing = true
-		avatarPicker.sourceType = .camera
-		avatarPicker.modalPresentationStyle = .popover
-		self.mediaPicker.value = avatarPicker
+		let mediaPicker = CaptureMediaPickerController()
+		mediaPicker.allowsEditing = true
+		mediaPicker.sourceType = .camera
+		mediaPicker.mediaTypes = [String(kUTTypeImage), String(kUTTypeMovie)]
+		mediaPicker.modalPresentationStyle = .popover
+		self.mediaPicker.value = mediaPicker
 	}
 	
 	func cancelAction() {

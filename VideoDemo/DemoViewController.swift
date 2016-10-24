@@ -8,95 +8,116 @@
 
 import UIKit
 import AVFoundation
+import MediaPlayer
+import MobileCoreServices
+import AVKit
 
 class DemoViewController: VideoDemoViewController {
 	
-	private let _viewModel = DemoViewModel()
+	fileprivate let _viewModel = DemoViewModel()
 
 	@IBOutlet weak var recordButton: UIButton!
 	@IBOutlet weak var albumButton: UIButton!
 	@IBOutlet weak var saveButton: UIButton!
 	
-	let captureSession = AVCaptureSession()
-	var previewLayer : AVCaptureVideoPreviewLayer?
- 
-	// If we find a device we'll store it here for later use
-	var captureDevice : AVCaptureDevice?
- 
+	//children media view
+	weak var cameraViewController: CameraViewController?
+	weak var topicalMediaFrame: TopicalMediaFrame?
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
-		captureSession.sessionPreset = AVCaptureSessionPresetLow
 		
-		let devices = [AVCaptureDevice.defaultDevice(withDeviceType: .builtInWideAngleCamera, mediaType: AVMediaTypeVideo, position: .front), AVCaptureDevice.defaultDevice(withDeviceType: .builtInMicrophone, mediaType: AVMediaTypeAudio, position: .unspecified)]
+		_viewModel.mediaAlertController.signal.observeValues { [weak self] in
+			guard let alertController = $0 else { return }
+			self?.present(alertController, animated: true, completion: { _ in
+				alertController.view.tintColor = Colors.NavigationNeonPink
+			})
+		}
 		
-		// Loop through all the capture devices on this phone
-		for device in devices {
-			// Make sure this particular device supports video
-			if (device?.hasMediaType(AVMediaTypeVideo))! {
-				// Finally check the position and confirm we've got the back camera
-				if(device?.position == AVCaptureDevicePosition.back) {
-					captureDevice = device
+		_viewModel.mediaPicker.signal.observeValues { [weak self] in
+			guard let alertController = $0 as UIImagePickerController? else { return }
+			alertController.delegate = self as (UIImagePickerControllerDelegate & UINavigationControllerDelegate)?
+			self?.present(alertController, animated: true, completion: nil)
+		}
+		
+		_viewModel.mediaPicker.value?.delegate = self
+	}
+	
+
+	@IBAction func didTapRecordButton(_ sender: AnyObject) {
+		self.displayMessage("feature not yet implemented")
+	}
+	
+	@IBAction func didTapAlbumButton(_ sender: AnyObject) {
+		_viewModel.prepareMediaAlertController()
+	}
+	
+	@IBAction func didTapSaveButton(_ sender: AnyObject) {
+		self.displayMessage("Feature not yet implemented")
+	}
+
+}
+
+//MARK: - Segueways -
+extension DemoViewController {
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		switch segue.identifier ?? "" {
+		case "CameraViewController":
+			guard let vc = segue.destination as? CameraViewController else {
+				fatalError("This should be a camera view controller")
+			}
+			self.cameraViewController = vc
+		case "TopicalMediaFrame":
+			guard let vc = segue.destination as? TopicalMediaFrame else {
+				fatalError("This should be a topical media frame")
+			}
+			self.topicalMediaFrame = vc
+			
+		default: break
+		}
+	}
+}
+
+//MARK: - Delegation -
+//------------------------------------------------------------------------------
+extension DemoViewController: UIImagePickerControllerDelegate, MPMediaPickerControllerDelegate, UINavigationControllerDelegate {
+	public func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+	}
+	
+	public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+		
+		guard let mediaType = info[UIImagePickerControllerMediaType] as? NSString else {
+			self.displayMessage("Picking media failed D:")
+			dismiss(animated: true, completion: nil)
+			return
+		}
+		
+		// 2
+		dismiss(animated: true) {
+			// 3
+			if mediaType == kUTTypeMovie {
+				self.topicalMediaFrame?.movieViewMovieNSURL = info[UIImagePickerControllerMediaURL] as! NSURL
+				self.topicalMediaFrame?.movieView?.play()
+			} else if mediaType == kUTTypeImage {
+				guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else {
+					self.displayMessage("Could not load image D:")
+					return
 				}
-			}
-		}
-		
-		if captureDevice != nil {
-			beginSession()
-		}
-		
-	}
-	
-	func beginSession() {
-		
-		do {
-			try captureSession.addInput(AVCaptureDeviceInput(device: captureDevice))
-		} catch {
-			print("error")
-		}
-		
-		previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-		self.view.layer.addSublayer(previewLayer!)
-		previewLayer?.frame = self.view.layer.frame
-		captureSession.startRunning()
-	}
-	
-	func configureDevice() {
-		if let device = captureDevice {
-			device.unlockForConfiguration()
-			device.focusMode = .locked
-			device.unlockForConfiguration()
-		}
-	}
-	
-	func focusTo(value : Float) {
-		if let device = captureDevice {
-			do {
-				try device.lockForConfiguration()
-				device.setFocusModeLockedWithLensPosition(value, completionHandler: { (time) -> Void in
-					//
-				})
-				device.unlockForConfiguration()
-			} catch {
-				
+				self.topicalMediaFrame?.imageViewImage = image
 			}
 		}
 	}
 	
-	let screenWidth = UIScreen.main.bounds.size.width
-	
-	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		let anyTouch = touches.first
-		let touchPercent = anyTouch!.location(in: self.view).x / screenWidth
-		focusTo(value: Float(touchPercent))
+	public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+		dismiss(animated: true, completion: nil)
 	}
 	
-	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-		let anyTouch = touches.first
-		let touchPercent = anyTouch!.location(in: self.view).x / screenWidth
-		focusTo(value: Float(touchPercent))
+	public func mediaPicker(_: MPMediaPickerController, didPickMediaItems: MPMediaItemCollection) {
+		
 	}
-
-
+	
+	public func mediaPickerDidCancel(_: MPMediaPickerController) {
+		dismiss(animated: true, completion: nil)
+	}
 }
 

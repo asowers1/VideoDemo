@@ -147,37 +147,51 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 
 	// MARK: Session Management
 	
-	private enum SessionSetupResult {
+	fileprivate enum SessionSetupResult {
 		case success
 		case notAuthorized
 		case configurationFailed
 	}
 	
-	private let session = AVCaptureSession()
+	fileprivate let session = AVCaptureSession()
 	
-	private var isSessionRunning = false
+	fileprivate var isSessionRunning = false
 	
-	private let sessionQueue = DispatchQueue(label: "session queue", attributes: [], target: nil) // Communicate with the session and other session objects on this queue.
+	fileprivate let sessionQueue = DispatchQueue(label: "session queue", attributes: [], target: nil) // Communicate with the session and other session objects on this queue.
 	
-	private var setupResult: SessionSetupResult = .success
+	fileprivate var setupResult: SessionSetupResult = .success
 	
 	var videoDeviceInput: AVCaptureDeviceInput!
 	
-	@IBOutlet private weak var previewView: PreviewView!
+	@IBOutlet fileprivate weak var previewView: PreviewView!
 	
 	// Call this on the session queue.
-	private func configureSession() {
+	fileprivate func configureSession() {
 		if setupResult != .success {
 			return
 		}
 		
-		session.beginConfiguration()
-		
-		/*
-			We do not create an AVCaptureMovieFileOutput when setting up the session because the
-			AVCaptureMovieFileOutput does not support movie recording with AVCaptureSessionPresetPhoto.
-		*/
-		session.sessionPreset = AVCaptureSessionPresetPhoto
+		sessionQueue.async { [unowned self] in
+			let movieFileOutput = AVCaptureMovieFileOutput()
+			
+			if self.session.canAddOutput(movieFileOutput) {
+				self.session.beginConfiguration()
+				self.session.addOutput(movieFileOutput)
+				self.session.sessionPreset = AVCaptureSessionPresetHigh
+				if let connection = movieFileOutput.connection(withMediaType: AVMediaTypeVideo) {
+					if connection.isVideoStabilizationSupported {
+						connection.preferredVideoStabilizationMode = .auto
+					}
+				}
+				self.session.commitConfiguration()
+				
+				self.movieFileOutput = movieFileOutput
+				
+				DispatchQueue.main.async { [unowned self] in
+					self.recordButton.isEnabled = true
+				}
+			}
+		}
 		
 		// Add video input.
 		do {
@@ -273,7 +287,7 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 		session.commitConfiguration()
 	}
 	
-	@IBAction private func resumeInterruptedSession(_ resumeButton: UIButton)
+	@IBAction fileprivate func resumeInterruptedSession(_ resumeButton: UIButton)
 	{
 		sessionQueue.async { [unowned self] in
 			/*
@@ -302,14 +316,14 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 		}
 	}
 	
-	private enum CaptureMode: Int {
+	fileprivate enum CaptureMode: Int {
 		case photo = 0
 		case movie = 1
 	}
 
-	@IBOutlet private weak var captureModeControl: UISegmentedControl!
+	@IBOutlet fileprivate weak var captureModeControl: UISegmentedControl!
 	
-	@IBAction private func toggleCaptureMode(_ captureModeControl: UISegmentedControl) {
+	@IBAction fileprivate func toggleCaptureMode(_ captureModeControl: UISegmentedControl) {
 		if captureModeControl.selectedSegmentIndex == CaptureMode.photo.rawValue {
 			recordButton.isEnabled = false
 			
@@ -366,13 +380,13 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 	
 	// MARK: Device Configuration
 	
-	@IBOutlet private weak var cameraButton: UIButton!
+	@IBOutlet fileprivate weak var cameraButton: UIButton!
 	
-	@IBOutlet private weak var cameraUnavailableLabel: UILabel!
+	@IBOutlet fileprivate weak var cameraUnavailableLabel: UILabel!
 	
-	private let videoDeviceDiscoverySession = AVCaptureDeviceDiscoverySession(deviceTypes: [.builtInWideAngleCamera, .builtInDuoCamera], mediaType: AVMediaTypeVideo, position: .unspecified)!
+	fileprivate let videoDeviceDiscoverySession = AVCaptureDeviceDiscoverySession(deviceTypes: [.builtInWideAngleCamera, .builtInDuoCamera], mediaType: AVMediaTypeVideo, position: .unspecified)!
 	
-	@IBAction private func changeCamera(_ cameraButton: UIButton) {
+	@IBAction fileprivate func changeCamera(_ cameraButton: UIButton) {
 		cameraButton.isEnabled = false
 		recordButton.isEnabled = false
 		photoButton.isEnabled = false
@@ -502,7 +516,7 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 	
 	@IBOutlet private weak var photoButton: UIButton!
 	
-	@IBAction private func capturePhoto(_ photoButton: UIButton) {
+	@IBAction fileprivate func capturePhoto(_ photoButton: UIButton) {
 		/*
 			Retrieve the video preview layer's video orientation on the main queue before
 			entering the session queue. We do this to ensure UI elements are accessed on
@@ -582,16 +596,16 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 		}
 	}
 	
-	private enum LivePhotoMode {
+	fileprivate enum LivePhotoMode {
 		case on
 		case off
 	}
 	
-	private var livePhotoMode: LivePhotoMode = .off
+	fileprivate var livePhotoMode: LivePhotoMode = .off
 	
-	@IBOutlet private weak var livePhotoModeButton: UIButton!
+	@IBOutlet fileprivate weak var livePhotoModeButton: UIButton!
 	
-	@IBAction private func toggleLivePhotoMode(_ livePhotoModeButton: UIButton) {
+	@IBAction fileprivate func toggleLivePhotoMode(_ livePhotoModeButton: UIButton) {
 		sessionQueue.async { [unowned self] in
 			self.livePhotoMode = (self.livePhotoMode == .on) ? .off : .on
 			let livePhotoMode = self.livePhotoMode
@@ -607,21 +621,21 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 		}
 	}
 	
-	private var inProgressLivePhotoCapturesCount = 0
+	fileprivate var inProgressLivePhotoCapturesCount = 0
 	
 	@IBOutlet var capturingLivePhotoLabel: UILabel!
 	
 	// MARK: Recording Movies
 	
-	private var movieFileOutput: AVCaptureMovieFileOutput? = nil
+	fileprivate var movieFileOutput: AVCaptureMovieFileOutput? = nil
 	
-	private var backgroundRecordingID: UIBackgroundTaskIdentifier? = nil
+	fileprivate var backgroundRecordingID: UIBackgroundTaskIdentifier? = nil
 	
-	@IBOutlet private weak var recordButton: UIButton!
+	@IBOutlet fileprivate weak var recordButton: UIButton!
 	
-	@IBOutlet private weak var resumeButton: UIButton!
+	@IBOutlet fileprivate weak var resumeButton: UIButton!
 	
-	@IBAction private func toggleMovieRecording(_ recordButton: UIButton) {
+	@IBAction fileprivate func toggleMovieRecording(_ recordButton: UIButton) {
 		guard let movieFileOutput = self.movieFileOutput else {
 			return
 		}

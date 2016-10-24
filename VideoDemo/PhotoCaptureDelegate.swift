@@ -10,17 +10,17 @@ import AVFoundation
 import Photos
 
 class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
-	private(set) var requestedPhotoSettings: AVCapturePhotoSettings
+	fileprivate(set) var requestedPhotoSettings: AVCapturePhotoSettings
 	
-	private let willCapturePhotoAnimation: () -> ()
+	fileprivate let willCapturePhotoAnimation: () -> ()
 	
-	private let capturingLivePhoto: (Bool) -> ()
+	fileprivate let capturingLivePhoto: (Bool) -> ()
 	
-	private let completed: (PhotoCaptureDelegate) -> ()
+	fileprivate let completed: (PhotoCaptureDelegate) -> ()
 	
-	private var photoData: Data? = nil
+	fileprivate var photoData: Data? = nil
 	
-	private var livePhotoCompanionMovieURL: URL? = nil
+	fileprivate var livePhotoCompanionMovieURL: URL? = nil
 
 	init(with requestedPhotoSettings: AVCapturePhotoSettings, willCapturePhotoAnimation: @escaping () -> (), capturingLivePhoto: @escaping (Bool) -> (), completed: @escaping (PhotoCaptureDelegate) -> ()) {
 		self.requestedPhotoSettings = requestedPhotoSettings
@@ -29,7 +29,7 @@ class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
 		self.completed = completed
 	}
 	
-	private func didFinish() {
+	fileprivate func didFinish() {
 		if let livePhotoCompanionMoviePath = livePhotoCompanionMovieURL?.path {
 			if FileManager.default.fileExists(atPath: livePhotoCompanionMoviePath) {
 				do {

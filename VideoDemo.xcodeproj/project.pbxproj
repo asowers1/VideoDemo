@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		494979CF1DB94D8A00FF444C /* MessageOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494979CD1DB94D8A00FF444C /* MessageOverlay.xib */; };
+		494979D01DB94D8A00FF444C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494979CE1DB94D8A00FF444C /* Message.swift */; };
+		494979D51DB9566500FF444C /* DemoNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494979D41DB9566500FF444C /* DemoNavigationController.swift */; };
+		494979D71DBBB94200FF444C /* TopicalMediaFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494979D61DBBB94200FF444C /* TopicalMediaFrame.swift */; };
 		4987F7441DB5C80B006392D2 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4987F7401DB5C80B006392D2 /* ReactiveCocoa.framework */; };
 		4987F7451DB5C80B006392D2 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4987F7401DB5C80B006392D2 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4987F7461DB5C80B006392D2 /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4987F7411DB5C80B006392D2 /* SwiftyUserDefaults.framework */; };
@@ -27,6 +31,7 @@
 		49A43C561DAFA25800E38380 /* VideoDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A43C551DAFA25800E38380 /* VideoDemoUITests.swift */; };
 		49A43C641DAFA34600E38380 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A43C631DAFA34600E38380 /* Colors.swift */; };
 		49A43C661DAFA39C00E38380 /* VideoDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A43C651DAFA39C00E38380 /* VideoDemoViewController.swift */; };
+		49BC1DB51DBD74A50056CC4E /* AVPlayerLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BC1DB41DBD74A50056CC4E /* AVPlayerLayerView.swift */; };
 		49BF799E1DB26C5100BD336C /* CaptureMediaPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BF799D1DB26C5100BD336C /* CaptureMediaPickerController.swift */; };
 		49BF79A41DB270A800BD336C /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BF79A31DB270A800BD336C /* Storyboard.swift */; };
 		49BF79BF1DB27EE200BD336C /* DemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BF79BE1DB27EE200BD336C /* DemoViewModel.swift */; };
@@ -67,6 +72,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		494979CD1DB94D8A00FF444C /* MessageOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageOverlay.xib; sourceTree = "<group>"; };
+		494979CE1DB94D8A00FF444C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		494979D41DB9566500FF444C /* DemoNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoNavigationController.swift; sourceTree = "<group>"; };
+		494979D61DBBB94200FF444C /* TopicalMediaFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicalMediaFrame.swift; sourceTree = "<group>"; };
 		4987F72A1DB5A880006392D2 /* VideoDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VideoDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		4987F7401DB5C80B006392D2 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		4987F7411DB5C80B006392D2 /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = Carthage/Build/iOS/SwiftyUserDefaults.framework; sourceTree = "<group>"; };
@@ -90,6 +99,7 @@
 		49A43C571DAFA25800E38380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49A43C631DAFA34600E38380 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		49A43C651DAFA39C00E38380 /* VideoDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDemoViewController.swift; sourceTree = "<group>"; };
+		49BC1DB41DBD74A50056CC4E /* AVPlayerLayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerLayerView.swift; sourceTree = "<group>"; };
 		49BF799D1DB26C5100BD336C /* CaptureMediaPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureMediaPickerController.swift; sourceTree = "<group>"; };
 		49BF79A31DB270A800BD336C /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		49BF79BE1DB27EE200BD336C /* DemoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewModel.swift; sourceTree = "<group>"; };
@@ -124,6 +134,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		494979CC1DB94D7500FF444C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				494979D11DB94D9100FF444C /* MessageOverlay */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		494979D11DB94D9100FF444C /* MessageOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				494979CD1DB94D8A00FF444C /* MessageOverlay.xib */,
+				494979CE1DB94D8A00FF444C /* Message.swift */,
+			);
+			name = MessageOverlay;
+			sourceTree = "<group>";
+		};
+		494979D31DB9503400FF444C /* AVSession */ = {
+			isa = PBXGroup;
+			children = (
+				4987F74D1DB6F014006392D2 /* PreviewView.swift */,
+				4987F74E1DB6F014006392D2 /* CameraViewController.swift */,
+				4987F74F1DB6F014006392D2 /* PhotoCaptureDelegate.swift */,
+				49A43C651DAFA39C00E38380 /* VideoDemoViewController.swift */,
+				494979D61DBBB94200FF444C /* TopicalMediaFrame.swift */,
+			);
+			name = AVSession;
+			sourceTree = "<group>";
+		};
 		49A43C291DAFA25800E38380 = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +219,8 @@
 			isa = PBXGroup;
 			children = (
 				49BF799D1DB26C5100BD336C /* CaptureMediaPickerController.swift */,
+				49BC1DB41DBD74A50056CC4E /* AVPlayerLayerView.swift */,
+				494979D31DB9503400FF444C /* AVSession */,
 				49BF79A01DB2704C00BD336C /* View Controllers */,
 			);
 			name = "Media Cpature";
@@ -188,12 +229,9 @@
 		49BF79A01DB2704C00BD336C /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4987F74D1DB6F014006392D2 /* PreviewView.swift */,
-				4987F74E1DB6F014006392D2 /* CameraViewController.swift */,
-				4987F74F1DB6F014006392D2 /* PhotoCaptureDelegate.swift */,
-				49A43C651DAFA39C00E38380 /* VideoDemoViewController.swift */,
 				49A43C371DAFA25800E38380 /* DemoViewController.swift */,
 				49BF79BE1DB27EE200BD336C /* DemoViewModel.swift */,
+				494979D41DB9566500FF444C /* DemoNavigationController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -210,6 +248,7 @@
 		49BF79A21DB2709C00BD336C /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				494979CC1DB94D7500FF444C /* Views */,
 				49A43C391DAFA25800E38380 /* Main.storyboard */,
 				49A43C3E1DAFA25800E38380 /* LaunchScreen.storyboard */,
 				49BF79A31DB270A800BD336C /* Storyboard.swift */,
@@ -343,6 +382,7 @@
 			files = (
 				49A43C401DAFA25800E38380 /* LaunchScreen.storyboard in Resources */,
 				49A43C3D1DAFA25800E38380 /* Assets.xcassets in Resources */,
+				494979CF1DB94D8A00FF444C /* MessageOverlay.xib in Resources */,
 				49A43C3B1DAFA25800E38380 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,8 +436,12 @@
 				49A43C661DAFA39C00E38380 /* VideoDemoViewController.swift in Sources */,
 				49BF79A41DB270A800BD336C /* Storyboard.swift in Sources */,
 				49BF799E1DB26C5100BD336C /* CaptureMediaPickerController.swift in Sources */,
+				494979D01DB94D8A00FF444C /* Message.swift in Sources */,
 				49BF79BF1DB27EE200BD336C /* DemoViewModel.swift in Sources */,
 				4987F7521DB6F014006392D2 /* PhotoCaptureDelegate.swift in Sources */,
+				49BC1DB51DBD74A50056CC4E /* AVPlayerLayerView.swift in Sources */,
+				494979D51DB9566500FF444C /* DemoNavigationController.swift in Sources */,
+				494979D71DBBB94200FF444C /* TopicalMediaFrame.swift in Sources */,
 				4987F7511DB6F014006392D2 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

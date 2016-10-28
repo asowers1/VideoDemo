@@ -45,7 +45,7 @@ class DemoViewController: VideoDemoViewController {
 	
 
 	@IBAction func didTapRecordButton(_ sender: AnyObject) {
-		self.displayMessage("feature not yet implemented")
+		cameraViewController?.startRecording()
 	}
 	
 	@IBAction func didTapAlbumButton(_ sender: AnyObject) {
@@ -58,6 +58,19 @@ class DemoViewController: VideoDemoViewController {
 
 }
 
+//MARK: - CameraVieController Delegation -
+extension DemoViewController: CameraViewControllerDelegate {
+	func didStartRecording() {
+		self.recordButton?.setTitle("Pause", for: .normal)
+	}
+	func didPauseRecording() {
+		self.recordButton?.setTitle("Resume", for: .normal)
+	}
+	func didStopRecording() {
+		self.recordButton?.setTitle("Record", for: .normal)
+	}
+}
+
 //MARK: - Segueways -
 extension DemoViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -67,6 +80,7 @@ extension DemoViewController {
 				fatalError("This should be a camera view controller")
 			}
 			self.cameraViewController = vc
+			self.cameraViewController?.delegate = self
 		case "TopicalMediaFrame":
 			guard let vc = segue.destination as? TopicalMediaFrame else {
 				fatalError("This should be a topical media frame")
@@ -81,7 +95,7 @@ extension DemoViewController {
 //MARK: - Delegation -
 //------------------------------------------------------------------------------
 extension DemoViewController: UIImagePickerControllerDelegate, MPMediaPickerControllerDelegate, UINavigationControllerDelegate {
-	public func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+	public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
 	}
 	
 	public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -96,7 +110,7 @@ extension DemoViewController: UIImagePickerControllerDelegate, MPMediaPickerCont
 		dismiss(animated: true) {
 			// 3
 			if mediaType == kUTTypeMovie {
-				self.topicalMediaFrame?.movieViewMovieNSURL = info[UIImagePickerControllerMediaURL] as! NSURL
+				self.topicalMediaFrame?.movieViewMovieNSURL = (info[UIImagePickerControllerMediaURL] as! NSURL) as URL!
 				self.topicalMediaFrame?.movieView?.play()
 			} else if mediaType == kUTTypeImage {
 				guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else {

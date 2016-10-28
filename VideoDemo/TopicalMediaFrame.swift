@@ -34,9 +34,9 @@ class TopicalMediaFrame: UIViewController, UIGestureRecognizerDelegate {
 		}
 	}
 	
-	var movieViewMovieNSURL: NSURL! {
+	var movieViewMovieNSURL: URL! {
 		didSet {
-			movieView.setContentUrl(url: movieViewMovieNSURL)
+			movieView.setContentUrl(movieViewMovieNSURL)
 			self.view?.bringSubview(toFront: movieView)
 		}
 	}

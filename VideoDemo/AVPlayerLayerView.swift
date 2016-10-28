@@ -28,7 +28,7 @@ class AVPlayerLayerView: UIView {
 		inits()
 	}
 	
-	private func inits() {
+	fileprivate func inits() {
 		
 		avPlayerLayer = AVPlayerLayer(player: player)
 		avPlayerLayer.bounds = self.layer.bounds
@@ -37,7 +37,7 @@ class AVPlayerLayerView: UIView {
 		self.layer.insertSublayer(avPlayerLayer, at: 0)
 	}
 	
-	func setContentUrl(url: NSURL) {
+	func setContentUrl(_ url: URL) {
 		print("Setting up item: \(url)")
 		let item = AVPlayerItem(url: url as URL)
 		player.replaceCurrentItem(with: item)

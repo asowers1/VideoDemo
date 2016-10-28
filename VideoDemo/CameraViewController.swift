@@ -10,11 +10,42 @@ import UIKit
 import AVFoundation
 import Photos
 
-class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
+protocol CameraViewControllerDelegate: class {
+	func didStartRecording()
+	func didPauseRecording()
+	func didStopRecording()
+}
+
+class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelegate, UIGestureRecognizerDelegate {
 	// MARK: View Controller Life Cycle
+	
+	//MARK - Properties -
+	
+	var rotation = CGFloat()
+	
+	let tapRec = UITapGestureRecognizer()
+	let pinchRec = UIPinchGestureRecognizer()
+	let swipeRec = UISwipeGestureRecognizer()
+	let longPressRec = UILongPressGestureRecognizer()
+	let rotateRec = UIRotationGestureRecognizer()
+	let panRec = UIPanGestureRecognizer()
+
+	var delegate: CameraViewControllerDelegate?
 	
     override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		pinchRec.delegate = self
+		rotateRec.delegate = self
+		panRec.delegate = self
+		
+		pinchRec.addTarget(self, action: #selector(TopicalMediaFrame.pinchedView(_:)))
+		rotateRec.addTarget(self, action: #selector(TopicalMediaFrame.rotatedView(_:)))
+		panRec.addTarget(self, action: #selector(TopicalMediaFrame.draggedView(_:)))
+		
+		self.view?.addGestureRecognizer(pinchRec)
+		self.view?.addGestureRecognizer(rotateRec)
+		self.view?.addGestureRecognizer(panRec)
 		
 		// Disable UI. The UI is enabled if and only if the session starts running.
 		cameraButton.isEnabled = false
@@ -25,6 +56,7 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 		
 		// Set up the video preview view.
 		previewView.session = session
+		previewView.videoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
 		
 		/*
 			Check video authorization status. Video access is required and audio
@@ -118,6 +150,31 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 		}
 		
 		super.viewWillDisappear(animated)
+	}
+	
+	func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+		return true
+	}
+	
+	//MARK: - Gestures -
+	func rotatedView(_ sender:UIRotationGestureRecognizer){
+		DispatchQueue.main.async {
+			sender.view!.transform = sender.view!.transform.rotated(by: sender.rotation)
+			sender.rotation = 0
+		}
+	}
+	func pinchedView(_ sender:UIPinchGestureRecognizer){
+		DispatchQueue.main.async {
+			sender.view?.transform = ((sender.view?.transform)?.scaledBy(x: sender.scale, y: sender.scale))!
+			sender.scale = 1.0
+		}
+	}
+	func draggedView(_ sender:UIPanGestureRecognizer){
+		DispatchQueue.main.async { [unowned self] in
+			let translation = sender.translation(in: self.view)
+			sender.view?.center = CGPoint(x: (sender.view?.center.x)! + translation.x, y: (sender.view?.center.y)! + translation.y)
+			sender.setTranslation(CGPoint.zero, in: self.view)
+		}
 	}
 	
     override var shouldAutorotate: Bool {
@@ -636,24 +693,29 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 	@IBOutlet fileprivate weak var resumeButton: UIButton!
 	
 	@IBAction fileprivate func toggleMovieRecording(_ recordButton: UIButton) {
+		startRecording()
+	}
+	
+	func startRecording() {
 		guard let movieFileOutput = self.movieFileOutput else {
 			return
 		}
+		delegate?.didStartRecording()
 		
 		/*
-			Disable the Camera button until recording finishes, and disable
-			the Record button until recording starts or finishes.
+		Disable the Camera button until recording finishes, and disable
+		the Record button until recording starts or finishes.
 		
-			See the AVCaptureFileOutputRecordingDelegate methods.
+		See the AVCaptureFileOutputRecordingDelegate methods.
 		*/
 		cameraButton.isEnabled = false
 		recordButton.isEnabled = false
 		captureModeControl.isEnabled = false
 		
 		/*
-			Retrieve the video preview layer's video orientation on the main queue
-			before entering the session queue. We do this to ensure UI elements are
-			accessed on the main thread and session configuration is done on the session queue.
+		Retrieve the video preview layer's video orientation on the main queue
+		before entering the session queue. We do this to ensure UI elements are
+		accessed on the main thread and session configuration is done on the session queue.
 		*/
 		let videoPreviewLayerOrientation = previewView.videoPreviewLayer.connection.videoOrientation
 		
@@ -661,12 +723,12 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 			if !movieFileOutput.isRecording {
 				if UIDevice.current.isMultitaskingSupported {
 					/*
-						Setup background task.
-						This is needed because the `capture(_:, didFinishRecordingToOutputFileAt:, fromConnections:, error:)`
-						callback is not received until AVCam returns to the foreground unless you request background execution time.
-						This also ensures that there will be time to write the file to the photo library when AVCam is backgrounded.
-						To conclude this background execution, endBackgroundTask(_:) is called in
-						`capture(_:, didFinishRecordingToOutputFileAt:, fromConnections:, error:)` after the recorded file has been saved.
+					Setup background task.
+					This is needed because the `capture(_:, didFinishRecordingToOutputFileAt:, fromConnections:, error:)`
+					callback is not received until AVCam returns to the foreground unless you request background execution time.
+					This also ensures that there will be time to write the file to the photo library when AVCam is backgrounded.
+					To conclude this background execution, endBackgroundTask(_:) is called in
+					`capture(_:, didFinishRecordingToOutputFileAt:, fromConnections:, error:)` after the recorded file has been saved.
 					*/
 					self.backgroundRecordingID = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
 				}
@@ -682,8 +744,10 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 			}
 			else {
 				movieFileOutput.stopRecording()
+				self.delegate?.didStopRecording()
 			}
 		}
+
 	}
 	
 	func capture(_ captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!) {

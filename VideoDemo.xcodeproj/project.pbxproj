@@ -344,12 +344,14 @@
 					49A43C451DAFA25800E38380 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 2DP9335PZJ;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 49A43C311DAFA25800E38380;
 					};
 					49A43C501DAFA25800E38380 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 2DP9335PZJ;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 49A43C311DAFA25800E38380;
 					};

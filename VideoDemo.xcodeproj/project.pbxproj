@@ -191,6 +191,7 @@
 				49A43C351DAFA25800E38380 /* AppDelegate.swift */,
 				49BF79A11DB2706500BD336C /* Resources */,
 				49BF799F1DB2704000BD336C /* Media Cpature */,
+				494979CC1DB94D7500FF444C /* Views */,
 				49BF79A21DB2709C00BD336C /* Storyboard */,
 				49A43C411DAFA25800E38380 /* Info.plist */,
 				4987F72A1DB5A880006392D2 /* VideoDemo-Bridging-Header.h */,
@@ -248,7 +249,6 @@
 		49BF79A21DB2709C00BD336C /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				494979CC1DB94D7500FF444C /* Views */,
 				49A43C391DAFA25800E38380 /* Main.storyboard */,
 				49A43C3E1DAFA25800E38380 /* LaunchScreen.storyboard */,
 				49BF79A31DB270A800BD336C /* Storyboard.swift */,

@@ -20,9 +20,6 @@ class DemoViewController: VideoDemoViewController {
 	@IBOutlet weak var albumButton: UIButton!
 	@IBOutlet weak var saveButton: UIButton!
 	
-	var selfieMediaViewRotation = CGFloat()
-	var topicalMediaViewRotation = CGFloat()
-	
 	let pinchSelfieRec = UIPinchGestureRecognizer()
 	let pinchTopicalRec = UIPinchGestureRecognizer()
 	
@@ -152,21 +149,30 @@ class DemoViewController: VideoDemoViewController {
 extension DemoViewController: UIGestureRecognizerDelegate {
 	//MARK: - Gestures -
 	func rotatedView(_ sender:UIRotationGestureRecognizer){
-		DispatchQueue.main.async {
+		DispatchQueue.main.async { [unowned self] in
+			self.view?.bringSubview(toFront: sender.view!)
 			sender.view!.transform = sender.view!.transform.rotated(by: sender.rotation)
 			sender.rotation = 0
 		}
 	}
 	func pinchedView(_ sender:UIPinchGestureRecognizer){
-		DispatchQueue.main.async {
-			sender.view?.transform = ((sender.view?.transform)?.scaledBy(x: sender.scale, y: sender.scale))!
+		DispatchQueue.main.async { [unowned self] in
+			self.view?.bringSubview(toFront: sender.view!.superview!)
+			let scale = sender.scale
+			sender.view?.superview?.transform = sender.view!.superview!.transform.scaledBy(x: scale, y: scale)
 			sender.scale = 1.0
 		}
 	}
 	func draggedView(_ sender:UIPanGestureRecognizer){
 		DispatchQueue.main.async { [unowned self] in
-			let translation = sender.translation(in: self.view)
-			sender.view?.center = CGPoint(x: (sender.view?.center.x)! + translation.x, y: (sender.view?.center.y)! + translation.y)
+			
+			self.view?.bringSubview(toFront: sender.view!.superview!)
+			
+			let translation = sender.translation(in: self.view!)
+			
+			sender.view!.superview!.center.x += translation.x
+			sender.view!.superview!.center.y += translation.y
+			
 			sender.setTranslation(CGPoint.zero, in: self.view)
 		}
 	}

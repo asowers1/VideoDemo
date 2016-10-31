@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -82,20 +81,16 @@
                                     <constraint firstItem="qCd-0h-DKo" firstAttribute="width" secondItem="B4e-1z-JjI" secondAttribute="width" id="uVK-NI-2ya"/>
                                 </constraints>
                             </stackView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBa-Ai-WkL">
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gBa-Ai-WkL">
                                 <rect key="frame" x="16" y="80" width="343" height="343"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="gBa-Ai-WkL" secondAttribute="height" multiplier="1:1" id="eIR-SM-8Df"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="cE6-Sg-tRN" kind="embed" identifier="TopicalMediaFrame" id="QTw-Jk-5GR"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laz-No-kjp">
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="laz-No-kjp">
                                 <rect key="frame" x="16" y="80" width="343" height="343"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="laz-No-kjp" secondAttribute="height" multiplier="1:1" id="cNJ-Gh-NfL"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="nfJ-Mn-dLX" kind="embed" identifier="CameraViewController" id="6qZ-Ob-UNK"/>
                                 </connections>
@@ -103,15 +98,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.23424834012985229" green="0.26162609457969666" blue="0.32391834259033203" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="laz-No-kjp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="BqL-ae-wXg"/>
-                            <constraint firstItem="laz-No-kjp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="Gvt-iL-tH9"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="M7e-YE-UCQ" secondAttribute="bottom" constant="20" id="Mln-1N-Dhi"/>
-                            <constraint firstItem="gBa-Ai-WkL" firstAttribute="trailing" secondItem="laz-No-kjp" secondAttribute="trailing" id="Rha-qJ-XmM"/>
-                            <constraint firstItem="gBa-Ai-WkL" firstAttribute="bottom" secondItem="laz-No-kjp" secondAttribute="bottom" id="auB-4u-X3T"/>
-                            <constraint firstItem="gBa-Ai-WkL" firstAttribute="leading" secondItem="laz-No-kjp" secondAttribute="leading" id="cN2-Ud-uvn"/>
-                            <constraint firstItem="gBa-Ai-WkL" firstAttribute="top" secondItem="laz-No-kjp" secondAttribute="top" id="eCb-rk-0AB"/>
-                            <constraint firstItem="gBa-Ai-WkL" firstAttribute="width" secondItem="gBa-Ai-WkL" secondAttribute="height" multiplier="1:1" id="kQH-p5-4Ac"/>
-                            <constraint firstAttribute="trailing" secondItem="laz-No-kjp" secondAttribute="trailing" constant="16" id="pIN-Pf-p3n"/>
                             <constraint firstItem="M7e-YE-UCQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ueu-hn-C77"/>
                         </constraints>
                     </view>

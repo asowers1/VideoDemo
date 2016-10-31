@@ -1,2 +1,2 @@
 github "ReactiveCocoa/ReactiveCocoa" "master"
-github "radex/SwiftyUserDefaults" ~> 3.0.0
+github "asowers1/SwiftyUserDefaults" ~> 3.1.0

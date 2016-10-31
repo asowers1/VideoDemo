@@ -1,4 +1,4 @@
 github "antitypical/Result" "3.0.0"
-github "radex/SwiftyUserDefaults" "3.0.0"
-github "ReactiveCocoa/ReactiveSwift" "1.0.0-alpha.2"
-github "ReactiveCocoa/ReactiveCocoa" "4296d939cb5e991871b985e4bd85910d58feadce"
+github "asowers1/SwiftyUserDefaults" "3.1.0"
+github "ReactiveCocoa/ReactiveSwift" "1.0.0-alpha.3"
+github "ReactiveCocoa/ReactiveCocoa" "9434297744fb96a2ae621989086c307730e85d1b"

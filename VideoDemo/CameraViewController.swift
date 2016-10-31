@@ -16,36 +16,12 @@ protocol CameraViewControllerDelegate: class {
 	func didStopRecording()
 }
 
-class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelegate, UIGestureRecognizerDelegate {
-	// MARK: View Controller Life Cycle
-	
-	//MARK - Properties -
-	
-	var rotation = CGFloat()
-	
-	let tapRec = UITapGestureRecognizer()
-	let pinchRec = UIPinchGestureRecognizer()
-	let swipeRec = UISwipeGestureRecognizer()
-	let longPressRec = UILongPressGestureRecognizer()
-	let rotateRec = UIRotationGestureRecognizer()
-	let panRec = UIPanGestureRecognizer()
+class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
 
 	var delegate: CameraViewControllerDelegate?
 	
     override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		pinchRec.delegate = self
-		rotateRec.delegate = self
-		panRec.delegate = self
-		
-		pinchRec.addTarget(self, action: #selector(TopicalMediaFrame.pinchedView(_:)))
-		rotateRec.addTarget(self, action: #selector(TopicalMediaFrame.rotatedView(_:)))
-		panRec.addTarget(self, action: #selector(TopicalMediaFrame.draggedView(_:)))
-		
-		self.view?.addGestureRecognizer(pinchRec)
-		self.view?.addGestureRecognizer(rotateRec)
-		self.view?.addGestureRecognizer(panRec)
 		
 		// Disable UI. The UI is enabled if and only if the session starts running.
 		cameraButton.isEnabled = false
@@ -154,27 +130,6 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 	
 	func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
 		return true
-	}
-	
-	//MARK: - Gestures -
-	func rotatedView(_ sender:UIRotationGestureRecognizer){
-		DispatchQueue.main.async {
-			sender.view!.transform = sender.view!.transform.rotated(by: sender.rotation)
-			sender.rotation = 0
-		}
-	}
-	func pinchedView(_ sender:UIPinchGestureRecognizer){
-		DispatchQueue.main.async {
-			sender.view?.transform = ((sender.view?.transform)?.scaledBy(x: sender.scale, y: sender.scale))!
-			sender.scale = 1.0
-		}
-	}
-	func draggedView(_ sender:UIPanGestureRecognizer){
-		DispatchQueue.main.async { [unowned self] in
-			let translation = sender.translation(in: self.view)
-			sender.view?.center = CGPoint(x: (sender.view?.center.x)! + translation.x, y: (sender.view?.center.y)! + translation.y)
-			sender.setTranslation(CGPoint.zero, in: self.view)
-		}
 	}
 	
     override var shouldAutorotate: Bool {

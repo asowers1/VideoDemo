@@ -11,14 +11,21 @@ import AVFoundation
 import MediaPlayer
 import MobileCoreServices
 import AVKit
+import QuartzCore
 
 class DemoViewController: VideoDemoViewController {
 	
 	fileprivate let _viewModel = DemoViewModel()
 
+	@IBOutlet weak var topicalContainer: UIView!
+	@IBOutlet weak var cameraContainer: UIView!
+	
 	@IBOutlet weak var recordButton: UIButton!
 	@IBOutlet weak var albumButton: UIButton!
 	@IBOutlet weak var saveButton: UIButton!
+	
+	var originalRect: CGRect!
+	var originalTransform: CGAffineTransform!
 	
 	let pinchSelfieRec = UIPinchGestureRecognizer()
 	let pinchTopicalRec = UIPinchGestureRecognizer()
@@ -80,6 +87,9 @@ class DemoViewController: VideoDemoViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		originalRect = CGRect(x: cameraContainer.frame.origin.x, y: cameraContainer.frame.origin.y, width: cameraContainer.frame.width, height: cameraContainer.frame.height)
+		originalTransform = cameraContainer.layer.affineTransform()
+		
 		for recognizer in gestureRecognizers {
 			recognizer.delegate = self
 		}
@@ -132,7 +142,7 @@ class DemoViewController: VideoDemoViewController {
 	
 
 	@IBAction func didTapRecordButton(_ sender: AnyObject) {
-		cameraViewController?.startRecording()
+		cameraViewController?.toggleRecording()
 	}
 	
 	@IBAction func didTapAlbumButton(_ sender: AnyObject) {
@@ -145,13 +155,43 @@ class DemoViewController: VideoDemoViewController {
 
 }
 
+//MARK: - DemoViewController TopicalMediaFrame Delegation -
+extension DemoViewController: TopicalMediaFrameDelegate {
+	func didSetMedia() {
+		self.view.bringSubview(toFront: self.cameraContainer)
+		self.cameraContainer.frame = originalRect!
+		self.topicalContainer.frame = originalRect!
+		
+		UIView.animate(withDuration: 0.1,
+		               delay: 0.1,
+		               options: UIViewAnimationOptions.curveEaseIn,
+		               animations: { [unowned self] () -> Void in
+						
+						//vc.view.frame = vc.originalFrame!
+						
+						let halfWidth = self.cameraContainer.frame.width / 2
+						let halfHeight = self.cameraContainer.frame.height / 2
+						let newY = self.cameraContainer.frame.origin.y + halfHeight
+						let newX = self.cameraContainer.frame.origin.x + halfWidth
+						
+						let newRect = CGRect(x: newX, y: newY, width: halfWidth, height: halfHeight)
+						
+						self.cameraContainer.frame = newRect
+						//selfieVC.view.superview!.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+						
+		}, completion: { (finished) -> Void in
+			self.cameraViewController?.aVPlayerLayerView.replay()
+		})
+	}
+}
+
 //MARK: - DemoViewController Gesture Recognition -
 extension DemoViewController: UIGestureRecognizerDelegate {
 	//MARK: - Gestures -
 	func rotatedView(_ sender:UIRotationGestureRecognizer){
 		DispatchQueue.main.async { [unowned self] in
 			self.view?.bringSubview(toFront: sender.view!)
-			sender.view!.transform = sender.view!.transform.rotated(by: sender.rotation)
+			sender.view?.superview?.transform = sender.view!.transform.rotated(by: sender.rotation)
 			sender.rotation = 0
 		}
 	}
@@ -186,13 +226,20 @@ extension DemoViewController: UIGestureRecognizerDelegate {
 //MARK: - CameraViewController Delegation -
 extension DemoViewController: CameraViewControllerDelegate {
 	func didStartRecording() {
-		self.recordButton?.setTitle("Pause", for: .normal)
+		DispatchQueue.main.async {
+			self.recordButton?.setTitle("Pause", for: .normal)
+		}
 	}
 	func didPauseRecording() {
-		self.recordButton?.setTitle("Resume", for: .normal)
+		DispatchQueue.main.async {
+			self.recordButton?.setTitle("Resume", for: .normal)
+		}
 	}
 	func didStopRecording() {
-		self.recordButton?.setTitle("Record", for: .normal)
+		DispatchQueue.main.async {
+			self.recordButton?.setTitle("Record", for: .normal)
+			self.topicalMediaFrame?.movieView?.replay()
+		}
 	}
 }
 
@@ -211,6 +258,7 @@ extension DemoViewController {
 				fatalError("This should be a topical media frame")
 			}
 			self.topicalMediaFrame = vc
+			self.topicalMediaFrame?.delegate = self
 			
 		default: break
 		}
@@ -236,7 +284,6 @@ extension DemoViewController: UIImagePickerControllerDelegate, MPMediaPickerCont
 			// 3
 			if mediaType == kUTTypeMovie {
 				self.topicalMediaFrame?.movieViewMovieNSURL = (info[UIImagePickerControllerMediaURL] as! NSURL) as URL!
-				self.topicalMediaFrame?.movieView?.play()
 			} else if mediaType == kUTTypeImage {
 				guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else {
 					self.displayMessage("Could not load image D:")

@@ -9,38 +9,43 @@
 import UIKit
 import AVFoundation
 
-@IBDesignable
 class AVPlayerLayerView: UIView {
-	var player: AVPlayer = AVPlayer()
-	var avPlayerLayer: AVPlayerLayer!
 	
-	override init(frame: CGRect) {
-		super.init(frame: frame)
-		print("AVPlayerLayerView -> init with frame")
-		
-		inits()
+	let player: AVPlayer = AVPlayer()
+	let loopable = MutableProperty<Bool>(true)
+	
+	var avPlayerLayer: AVPlayerLayer {
+		return layer as! AVPlayerLayer
+	}
+
+	// MARK: UIView
+	
+	override class var layerClass: AnyClass {
+		return AVPlayerLayer.self
 	}
 	
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
-		print("AVPlayerLayerView -> init with coder")
-		
-		inits()
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		setup()
 	}
 	
-	fileprivate func inits() {
+	func setup() {
+		avPlayerLayer.player = player
+		avPlayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
 		
-		avPlayerLayer = AVPlayerLayer(player: player)
-		avPlayerLayer.bounds = self.layer.bounds
+		// Add notification block for replay
 		
-		//avPlayerLayer.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: self.layer.frame.width, height: self.layer.frame.height))
-		self.layer.insertSublayer(avPlayerLayer, at: 0)
+//		NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: nil)
+//		{ notification in
+//			self.replay()
+//		}
 	}
 	
 	func setContentUrl(_ url: URL) {
 		print("Setting up item: \(url)")
 		let item = AVPlayerItem(url: url as URL)
 		player.replaceCurrentItem(with: item)
+		play()
 	}
 	
 	func play() {
@@ -61,5 +66,10 @@ class AVPlayerLayerView: UIView {
 	func stop() {
 		pause()
 		rewind()
+	}
+	
+	func replay() {
+		stop()
+		play()
 	}
 }

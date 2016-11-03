@@ -106,8 +106,10 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="albumButton" destination="qCd-0h-DKo" id="4Mk-kJ-QKZ"/>
+                        <outlet property="cameraContainer" destination="laz-No-kjp" id="aif-j7-kHt"/>
                         <outlet property="recordButton" destination="tDq-LS-2cr" id="s6s-Jt-11w"/>
                         <outlet property="saveButton" destination="B4e-1z-JjI" id="LyM-3V-qkw"/>
+                        <outlet property="topicalContainer" destination="gBa-Ai-WkL" id="FFe-8g-paG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -150,6 +152,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="343" height="343"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogc-Dx-bL5" customClass="AVPlayerLayerView" customModule="VideoDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="343"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8O-Y7-YAV" userLabel="Preview" customClass="PreviewView" customModule="VideoDemo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="343"/>
                                 <gestureRecognizers/>
@@ -280,6 +286,7 @@
                         <color key="backgroundColor" red="0.69363301990000004" green="0.12666344639999999" blue="0.46892648939999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="kSK-J3-Gur" firstAttribute="leading" secondItem="flR-DR-bHP" secondAttribute="trailing" constant="20" id="0OI-Lx-HgY"/>
+                            <constraint firstItem="u8J-t3-Ux1" firstAttribute="top" secondItem="ogc-Dx-bL5" secondAttribute="bottom" id="28H-Zh-30h"/>
                             <constraint firstItem="kSK-J3-Gur" firstAttribute="top" secondItem="flR-DR-bHP" secondAttribute="top" id="2QV-Mn-xfm"/>
                             <constraint firstItem="OS6-6w-bIE" firstAttribute="centerX" secondItem="tL5-A0-AWz" secondAttribute="centerX" id="33x-jH-ZJv"/>
                             <constraint firstItem="Q8O-Y7-YAV" firstAttribute="width" secondItem="tL5-A0-AWz" secondAttribute="width" id="7h3-yA-iNr"/>
@@ -296,11 +303,14 @@
                             <constraint firstItem="57C-jM-qFg" firstAttribute="centerX" secondItem="tL5-A0-AWz" secondAttribute="centerX" id="VqG-dC-4o2"/>
                             <constraint firstItem="8Lw-lp-Htg" firstAttribute="centerY" secondItem="tL5-A0-AWz" secondAttribute="centerY" id="XEF-c8-UYc"/>
                             <constraint firstItem="kSK-J3-Gur" firstAttribute="width" secondItem="jVZ-0L-SVz" secondAttribute="width" id="gdg-bq-qIH"/>
+                            <constraint firstItem="ogc-Dx-bL5" firstAttribute="top" secondItem="aMC-Ja-I73" secondAttribute="bottom" id="icX-ER-aes"/>
+                            <constraint firstItem="ogc-Dx-bL5" firstAttribute="leading" secondItem="tL5-A0-AWz" secondAttribute="leading" id="jEp-yI-lhM"/>
                             <constraint firstItem="kSK-J3-Gur" firstAttribute="height" secondItem="flR-DR-bHP" secondAttribute="height" id="jYs-Ug-QVd"/>
                             <constraint firstItem="Q8O-Y7-YAV" firstAttribute="height" secondItem="tL5-A0-AWz" secondAttribute="height" id="k2e-X6-0n1"/>
                             <constraint firstItem="v7P-ns-V2H" firstAttribute="top" secondItem="OS6-6w-bIE" secondAttribute="bottom" constant="8" id="kaV-bR-9zj"/>
                             <constraint firstItem="jVZ-0L-SVz" firstAttribute="leading" secondItem="kSK-J3-Gur" secondAttribute="trailing" constant="20" id="l9R-If-WGB"/>
                             <constraint firstItem="1a2-y2-rX5" firstAttribute="centerY" secondItem="tL5-A0-AWz" secondAttribute="centerY" id="mUb-RV-9r7"/>
+                            <constraint firstAttribute="trailing" secondItem="ogc-Dx-bL5" secondAttribute="trailing" id="of8-Bs-fOR"/>
                             <constraint firstItem="kSK-J3-Gur" firstAttribute="height" secondItem="jVZ-0L-SVz" secondAttribute="height" id="u7N-Lh-Cd2"/>
                             <constraint firstItem="kSK-J3-Gur" firstAttribute="width" secondItem="flR-DR-bHP" secondAttribute="width" id="uyA-DF-BQg"/>
                         </constraints>
@@ -308,6 +318,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="aVPlayerLayerView" destination="ogc-Dx-bL5" id="LfY-gI-TZN"/>
                         <outlet property="cameraButton" destination="jVZ-0L-SVz" id="Wjn-6V-2Xz"/>
                         <outlet property="cameraUnavailableLabel" destination="8Lw-lp-Htg" id="Wfq-sO-2Bv"/>
                         <outlet property="captureModeControl" destination="57C-jM-qFg" id="Ogq-kq-zYq"/>
@@ -326,7 +337,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1777" y="720"/>
+            <point key="canvasLocation" x="1776.8" y="719.19040479760122"/>
         </scene>
         <!--Topical Media Frame-->
         <scene sceneID="Azh-GM-tvi">

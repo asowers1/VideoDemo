@@ -18,7 +18,7 @@ protocol CameraViewControllerDelegate: class {
 
 class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
 
-	var delegate: CameraViewControllerDelegate?
+	weak var delegate: CameraViewControllerDelegate?
 	
     override func viewDidLoad() {
 		super.viewDidLoad()
@@ -29,6 +29,13 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 		photoButton.isEnabled = false
 		livePhotoModeButton.isEnabled = false
 		captureModeControl.isEnabled = false
+		
+		// toggle cameraView debug buttons
+		cameraButton.isHidden = true
+		recordButton.isHidden = true
+		photoButton.isHidden = true
+		livePhotoModeButton.isHidden = true
+		captureModeControl.isHidden = true
 		
 		// Set up the video preview view.
 		previewView.session = session
@@ -177,8 +184,10 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 	
 	@IBOutlet fileprivate weak var previewView: PreviewView!
 	
+	@IBOutlet public weak var aVPlayerLayerView: AVPlayerLayerView!
+	
 	// Call this on the session queue.
-	fileprivate func configureSession() {
+	public func configureSession() {
 		if setupResult != .success {
 			return
 		}
@@ -648,14 +657,16 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 	@IBOutlet fileprivate weak var resumeButton: UIButton!
 	
 	@IBAction fileprivate func toggleMovieRecording(_ recordButton: UIButton) {
-		startRecording()
+		toggleRecording()
 	}
 	
-	func startRecording() {
+	func toggleRecording() {
 		guard let movieFileOutput = self.movieFileOutput else {
+			delegate?.didStopRecording()
 			return
 		}
 		delegate?.didStartRecording()
+		view.bringSubview(toFront: previewView)
 		
 		/*
 		Disable the Camera button until recording finishes, and disable
@@ -752,9 +763,11 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 		}
 		
 		if success {
+			
 			// Check authorization status.
 			PHPhotoLibrary.requestAuthorization { status in
 				if status == .authorized {
+					
 					// Save the movie file to the photo library and cleanup.
 					PHPhotoLibrary.shared().performChanges({
 							let options = PHAssetResourceCreationOptions()
@@ -785,6 +798,11 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
 			self.recordButton.isEnabled = true
 			self.captureModeControl.isEnabled = true
 			self.recordButton.setTitle(NSLocalizedString("Record", comment: "Recording button record title"), for: [])
+			// playback video in AVPlayerLayerPreview
+			
+			self.view.bringSubview(toFront: self.aVPlayerLayerView)
+			self.aVPlayerLayerView?.setContentUrl(outputFileURL)
+			self.aVPlayerLayerView?.play()
 		}
 	}
 	

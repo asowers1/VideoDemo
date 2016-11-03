@@ -9,30 +9,49 @@
 import UIKit
 import QuartzCore
 
+protocol TopicalMediaFrameDelegate: class {
+	func didSetMedia()
+}
+
 class TopicalMediaFrame: UIViewController {
 
 	//MARK - Outlets -
 	
 	@IBOutlet weak var movieView: AVPlayerLayerView!
 	@IBOutlet weak var imageView: UIImageView!
+	
+	var originalFrame: CGRect?
+	var originalBounds: CGRect?
+	
+	weak var delegate: TopicalMediaFrameDelegate?
 
 	var imageViewImage: UIImage! {
 		didSet {
-			imageView?.image = imageViewImage
-			self.view?.bringSubview(toFront: imageView)
+			DispatchQueue.main.async { [unowned self] in
+				self.movieView?.stop()
+				self.imageView?.image = self.imageViewImage
+				self.view?.bringSubview(toFront: self.imageView)
+				self.delegate?.didSetMedia()
+			}
 		}
 	}
 	
 	var movieViewMovieNSURL: URL! {
 		didSet {
-			movieView.setContentUrl(movieViewMovieNSURL)
-			self.view?.bringSubview(toFront: movieView)
+			DispatchQueue.main.async { [unowned self] in
+				self.imageView?.image = nil
+				self.movieView.setContentUrl(self.movieViewMovieNSURL)
+				self.view?.bringSubview(toFront:self.movieView)
+				self.delegate?.didSetMedia()
+			}
 		}
 	}
 
 	//MARK - View Lifecycle -
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		originalFrame = view.frame
+		originalBounds = view.bounds
 	}
 	
 	func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {

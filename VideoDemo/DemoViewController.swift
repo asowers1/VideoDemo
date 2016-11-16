@@ -189,6 +189,7 @@ extension DemoViewController: TopicalMediaFrameDelegate {
 extension DemoViewController: UIGestureRecognizerDelegate {
 	//MARK: - Gestures -
 	func rotatedView(_ sender:UIRotationGestureRecognizer){
+		print(sender)
 		DispatchQueue.main.async { [unowned self] in
 			self.view?.bringSubview(toFront: sender.view!)
 			sender.view?.superview?.transform = sender.view!.transform.rotated(by: sender.rotation)
@@ -196,6 +197,7 @@ extension DemoViewController: UIGestureRecognizerDelegate {
 		}
 	}
 	func pinchedView(_ sender:UIPinchGestureRecognizer){
+		print(sender)
 		DispatchQueue.main.async { [unowned self] in
 			self.view?.bringSubview(toFront: sender.view!.superview!)
 			let scale = sender.scale

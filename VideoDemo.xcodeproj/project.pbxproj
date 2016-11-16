@@ -11,6 +11,8 @@
 		494979D01DB94D8A00FF444C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494979CE1DB94D8A00FF444C /* Message.swift */; };
 		494979D51DB9566500FF444C /* DemoNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494979D41DB9566500FF444C /* DemoNavigationController.swift */; };
 		494979D71DBBB94200FF444C /* TopicalMediaFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494979D61DBBB94200FF444C /* TopicalMediaFrame.swift */; };
+		4972D4C61DD9772C00F4375F /* LeanCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4972D4C51DD9772C00F4375F /* LeanCache.framework */; };
+		4972D4C71DD9772C00F4375F /* LeanCache.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4972D4C51DD9772C00F4375F /* LeanCache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4987F7441DB5C80B006392D2 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4987F7401DB5C80B006392D2 /* ReactiveCocoa.framework */; };
 		4987F7451DB5C80B006392D2 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4987F7401DB5C80B006392D2 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4987F7461DB5C80B006392D2 /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4987F7411DB5C80B006392D2 /* SwiftyUserDefaults.framework */; };
@@ -22,6 +24,8 @@
 		4987F7501DB6F014006392D2 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987F74D1DB6F014006392D2 /* PreviewView.swift */; };
 		4987F7511DB6F014006392D2 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987F74E1DB6F014006392D2 /* CameraViewController.swift */; };
 		4987F7521DB6F014006392D2 /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987F74F1DB6F014006392D2 /* PhotoCaptureDelegate.swift */; };
+		499C10251DDC9F13007ED4F7 /* TimedTransformationSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499C10241DDC9F13007ED4F7 /* TimedTransformationSlice.swift */; };
+		499C10271DDCA25B007ED4F7 /* TimedTransformationSliceCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499C10261DDCA25B007ED4F7 /* TimedTransformationSliceCoder.swift */; };
 		49A43C361DAFA25800E38380 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A43C351DAFA25800E38380 /* AppDelegate.swift */; };
 		49A43C381DAFA25800E38380 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A43C371DAFA25800E38380 /* DemoViewController.swift */; };
 		49A43C3B1DAFA25800E38380 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49A43C391DAFA25800E38380 /* Main.storyboard */; };
@@ -63,6 +67,7 @@
 			files = (
 				4987F7451DB5C80B006392D2 /* ReactiveCocoa.framework in Embed Frameworks */,
 				4987F7471DB5C80B006392D2 /* SwiftyUserDefaults.framework in Embed Frameworks */,
+				4972D4C71DD9772C00F4375F /* LeanCache.framework in Embed Frameworks */,
 				4987F7491DB5C80B006392D2 /* ReactiveSwift.framework in Embed Frameworks */,
 				4987F74B1DB5C80B006392D2 /* Result.framework in Embed Frameworks */,
 			);
@@ -76,6 +81,7 @@
 		494979CE1DB94D8A00FF444C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		494979D41DB9566500FF444C /* DemoNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoNavigationController.swift; sourceTree = "<group>"; };
 		494979D61DBBB94200FF444C /* TopicalMediaFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicalMediaFrame.swift; sourceTree = "<group>"; };
+		4972D4C51DD9772C00F4375F /* LeanCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LeanCache.framework; path = Carthage/Build/iOS/LeanCache.framework; sourceTree = "<group>"; };
 		4987F72A1DB5A880006392D2 /* VideoDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VideoDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		4987F7401DB5C80B006392D2 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		4987F7411DB5C80B006392D2 /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = Carthage/Build/iOS/SwiftyUserDefaults.framework; sourceTree = "<group>"; };
@@ -84,6 +90,8 @@
 		4987F74D1DB6F014006392D2 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		4987F74E1DB6F014006392D2 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		4987F74F1DB6F014006392D2 /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
+		499C10241DDC9F13007ED4F7 /* TimedTransformationSlice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedTransformationSlice.swift; sourceTree = "<group>"; };
+		499C10261DDCA25B007ED4F7 /* TimedTransformationSliceCoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedTransformationSliceCoder.swift; sourceTree = "<group>"; };
 		49A43C321DAFA25800E38380 /* VideoDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49A43C351DAFA25800E38380 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49A43C371DAFA25800E38380 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +120,7 @@
 			files = (
 				4987F7441DB5C80B006392D2 /* ReactiveCocoa.framework in Frameworks */,
 				4987F7461DB5C80B006392D2 /* SwiftyUserDefaults.framework in Frameworks */,
+				4972D4C61DD9772C00F4375F /* LeanCache.framework in Frameworks */,
 				4987F7481DB5C80B006392D2 /* ReactiveSwift.framework in Frameworks */,
 				4987F74A1DB5C80B006392D2 /* Result.framework in Frameworks */,
 			);
@@ -164,6 +173,13 @@
 			name = AVSession;
 			sourceTree = "<group>";
 		};
+		4972D4C81DD977E300F4375F /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Cache;
+			sourceTree = "<group>";
+		};
 		49A43C291DAFA25800E38380 = {
 			isa = PBXGroup;
 			children = (
@@ -188,7 +204,10 @@
 		49A43C341DAFA25800E38380 /* VideoDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4972D4C81DD977E300F4375F /* Cache */,
 				49A43C351DAFA25800E38380 /* AppDelegate.swift */,
+				499C10241DDC9F13007ED4F7 /* TimedTransformationSlice.swift */,
+				499C10261DDCA25B007ED4F7 /* TimedTransformationSliceCoder.swift */,
 				49BF79A11DB2706500BD336C /* Resources */,
 				49BF799F1DB2704000BD336C /* Media Cpature */,
 				494979CC1DB94D7500FF444C /* Views */,
@@ -259,6 +278,7 @@
 		49BF79BB1DB278CB00BD336C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4972D4C51DD9772C00F4375F /* LeanCache.framework */,
 				4987F7401DB5C80B006392D2 /* ReactiveCocoa.framework */,
 				4987F7411DB5C80B006392D2 /* SwiftyUserDefaults.framework */,
 				4987F7421DB5C80B006392D2 /* ReactiveSwift.framework */,
@@ -416,6 +436,7 @@
 				ReactiveSwift,
 				ReactiveCocoa,
 				SwiftyUserDefaults,
+				LeanCache,
 			);
 			name = "Run Script";
 			outputPaths = (
@@ -435,6 +456,7 @@
 				4987F7501DB6F014006392D2 /* PreviewView.swift in Sources */,
 				49A43C641DAFA34600E38380 /* Colors.swift in Sources */,
 				49A43C361DAFA25800E38380 /* AppDelegate.swift in Sources */,
+				499C10251DDC9F13007ED4F7 /* TimedTransformationSlice.swift in Sources */,
 				49A43C661DAFA39C00E38380 /* VideoDemoViewController.swift in Sources */,
 				49BF79A41DB270A800BD336C /* Storyboard.swift in Sources */,
 				49BF799E1DB26C5100BD336C /* CaptureMediaPickerController.swift in Sources */,
@@ -443,6 +465,7 @@
 				4987F7521DB6F014006392D2 /* PhotoCaptureDelegate.swift in Sources */,
 				49BC1DB51DBD74A50056CC4E /* AVPlayerLayerView.swift in Sources */,
 				494979D51DB9566500FF444C /* DemoNavigationController.swift in Sources */,
+				499C10271DDCA25B007ED4F7 /* TimedTransformationSliceCoder.swift in Sources */,
 				494979D71DBBB94200FF444C /* TopicalMediaFrame.swift in Sources */,
 				4987F7511DB6F014006392D2 /* CameraViewController.swift in Sources */,
 			);

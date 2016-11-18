@@ -23,6 +23,7 @@ class DemoViewController: VideoDemoViewController {
 	@IBOutlet weak var recordButton: UIButton!
 	@IBOutlet weak var albumButton: UIButton!
 	@IBOutlet weak var saveButton: UIButton!
+	@IBOutlet weak var replayAnimationsButton: UIButton!
 	
 	var originalRect: CGRect!
 	var originalTransform: CGAffineTransform!
@@ -71,6 +72,7 @@ class DemoViewController: VideoDemoViewController {
 	
 	//children media view
 	weak var cameraViewController: CameraViewController?
+	weak var dummyViewController: UIViewController?
 	weak var topicalMediaFrame: TopicalMediaFrame?
 	
 	var mediaViews: [UIView] {
@@ -127,7 +129,7 @@ class DemoViewController: VideoDemoViewController {
 		super.viewWillAppear(animated)
 		
 		selfieGestureRecognizers.forEach {
-			cameraViewController?.view.addGestureRecognizer($0)
+			dummyViewController?.view.addGestureRecognizer($0)
 		}
 		
 		topicalGestureRecognizers.forEach {
@@ -152,7 +154,18 @@ class DemoViewController: VideoDemoViewController {
 	@IBAction func didTapSaveButton(_ sender: AnyObject) {
 		self.displayMessage("Feature not yet implemented")
 	}
+	
+	@IBAction func didTapReplayAnimationsButton(_ sender: AnyObject) {
+		self.replayAnimations()
+	}
 
+}
+
+//MARK: - Animation Replay -
+extension DemoViewController {
+	func replayAnimations() {
+		
+	}
 }
 
 //MARK: - DemoViewController TopicalMediaFrame Delegation -
@@ -251,7 +264,9 @@ extension DemoViewController {
 		switch segue.identifier ?? "" {
 		case "CameraViewController":
 			guard let vc = segue.destination as? CameraViewController else {
-				fatalError("This should be a camera view controller")
+				//fatalError("This should be a camera view controller")
+				self.dummyViewController = segue.destination
+				return
 			}
 			self.cameraViewController = vc
 			self.cameraViewController?.delegate = self

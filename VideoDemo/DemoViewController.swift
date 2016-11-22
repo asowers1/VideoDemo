@@ -12,6 +12,7 @@ import MediaPlayer
 import MobileCoreServices
 import AVKit
 import QuartzCore
+import ReactiveObjC
 
 class DemoViewController: VideoDemoViewController {
 	
@@ -123,6 +124,28 @@ class DemoViewController: VideoDemoViewController {
 		}
 		
 		_viewModel.mediaPicker.value?.delegate = self
+		
+		
+		self.topicalContainer.rac_values(forKeyPath: "center", observer: self)
+			.subscribeNext { next in
+				print("New topicalContainer center received: \n\(self.topicalContainer.center)")
+		}
+		
+		self.topicalContainer.rac_values(forKeyPath: "transform", observer: self)
+			.subscribeNext { next in
+				print("New topicalContainer transform received: \n\(self.topicalContainer.transform)")
+		}
+		
+		self.cameraContainer.rac_values(forKeyPath: "center", observer: self)
+			.subscribeNext { next in
+				print("New cameraContainer center received: \n\(self.cameraContainer.center)")
+		}
+		
+		self.cameraContainer.rac_values(forKeyPath: "transform", observer: self)
+			.subscribeNext { next in
+				print("New cameraContainer transform received: \n\(self.cameraContainer.transform)")
+		}
+		
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -202,7 +225,6 @@ extension DemoViewController: TopicalMediaFrameDelegate {
 extension DemoViewController: UIGestureRecognizerDelegate {
 	//MARK: - Gestures -
 	func rotatedView(_ sender:UIRotationGestureRecognizer){
-		print(sender)
 		DispatchQueue.main.async { [unowned self] in
 			self.view?.bringSubview(toFront: sender.view!)
 			sender.view?.superview?.transform = sender.view!.transform.rotated(by: sender.rotation)
@@ -210,7 +232,6 @@ extension DemoViewController: UIGestureRecognizerDelegate {
 		}
 	}
 	func pinchedView(_ sender:UIPinchGestureRecognizer){
-		print(sender)
 		DispatchQueue.main.async { [unowned self] in
 			self.view?.bringSubview(toFront: sender.view!.superview!)
 			let scale = sender.scale
@@ -220,14 +241,10 @@ extension DemoViewController: UIGestureRecognizerDelegate {
 	}
 	func draggedView(_ sender:UIPanGestureRecognizer){
 		DispatchQueue.main.async { [unowned self] in
-			
 			self.view?.bringSubview(toFront: sender.view!.superview!)
-			
 			let translation = sender.translation(in: self.view!)
-			
 			sender.view!.superview!.center.x += translation.x
 			sender.view!.superview!.center.y += translation.y
-			
 			sender.setTranslation(CGPoint.zero, in: self.view)
 		}
 	}

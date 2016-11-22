@@ -349,10 +349,10 @@
             </objects>
             <point key="canvasLocation" x="1777" y="375"/>
         </scene>
-        <!--View Controller-->
+        <!--Media View Controller-->
         <scene sceneID="jeS-uf-i7w">
             <objects>
-                <viewController id="6SD-WU-GL1" sceneMemberID="viewController">
+                <viewController id="6SD-WU-GL1" customClass="MediaViewController" customModule="VideoDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j4W-iA-6XE"/>
                         <viewControllerLayoutGuide type="bottom" id="4LR-Pr-eLR"/>

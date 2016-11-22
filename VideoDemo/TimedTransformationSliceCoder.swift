@@ -11,11 +11,9 @@ import UIKit
 
 class TimedTransformationSliceCoder: NSObject, NSCoding {
 	
-	typealias Slice = TimedTransformationSlice?
+	let slice: TimedTransformationSlice?
 	
-	let slice: Slice?
-	
-	init(timedTransformationSlice: Slice) {
+	init(timedTransformationSlice: TimedTransformationSlice) {
 		self.slice = timedTransformationSlice
 	}
 	
@@ -32,8 +30,8 @@ class TimedTransformationSliceCoder: NSObject, NSCoding {
 	}
 	
 	func encode(with aCoder: NSCoder) {
-		aCoder.encode(self.slice??.transformation, forKey: "transformation")
-		aCoder.encode(self.slice??.point, forKey: "point")
-		aCoder.encode(self.slice??.date, forKey: "date")
+		aCoder.encode(self.slice?.transformation, forKey: "transformation")
+		aCoder.encode(self.slice?.point, forKey: "point")
+		aCoder.encode(self.slice?.date, forKey: "date")
 	}
 }

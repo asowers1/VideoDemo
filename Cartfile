@@ -1,4 +1,5 @@
 github "marmelroy/Interpolate" "master"
 github "asowers1/LeanCache" "master"
 github "ReactiveCocoa/ReactiveCocoa" "master"
+github "ReactiveCocoa/ReactiveObjC" "master"
 github "radex/SwiftyUserDefaults" ~> 3.0.0
